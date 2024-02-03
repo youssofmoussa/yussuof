@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Youtube</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: "Roboto","Arial",sans-serif;
+} 
+
+header{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 56px;
+    padding: 0px 16px;
+}
+.logo {
+    order: 1;  /* Added to move the logo to the end */
+}
+
+
+.mid-section{
+    display: flex;
+    align-items: center;
+   justify-content: center;
+   order:2;
+   
+}
+.mid-section form{
+    display: flex;
+    height: 40px;
+    width: 300px;
+    align-items: center;
+   justify-content: center;
+}
+.mid-section input {
+    width: 100%;
+    border-radius: 50px 0px 0px 50px;
+    padding: 12px;
+    font-size: 1.6rem;
+    border: 1px solid #d3d3d3;
+    border-right: none;
+    align-items: center;
+    justify-content: center;
+ }
+
+.mid-section button{
+    width: 60px;
+    height: 44px;
+    border:  1px solid #d3d3d3 ;
+    padding-top: 4px;
+    background-color: #f8f8f8;
+    border-radius: 0px 50px 50px 0px;
+
+}
+.mid-section button:hover{
+    border-color: #c6c6c6;
+background-color: #f0f0f0;
+}
+
+.right-section {
+    order: 3;  /* Added to move the right section to the end */
+}
+nav {
+            background-color: transparent;
+            padding: 10px;
+            margin-top: 10px;
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            white-space: nowrap; /* Prevent line breaks */
+            transition: 0.3s ease-in-out;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            margin: 0 10px;
+            border-radius: 35px 35px;
+            font-weight: 300;
+            transition: 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            border: 1px solid grey;
+        }
+
+
+.content-area{
+    height: calc(100vh - 56px);
+    display: flex;
+    background-color: #f9f9f9;
+}
+
+
+
+.channel-img{
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+main{
+    width: 100%;
+    height: 100%;
+    padding: 35px 15px;
+    border-top: 1px solid #ddd;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 1;
+    justify-content: center;
+}
+.videos-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.video{
+    width: 300px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+.thumbnail{
+    width: 100%;
+    height: 187px;
+    margin-bottom: 12px;
+}
+.thumbnail img{
+    height: 100%;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+}
+.thumbnail img:hover{
+  transform: scale(1.1);
+}
+
+.video-details {
+    display: flex;
+}
+.creator-img img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+}
+.title a {
+    text-decoration: none;
+}
+.video-title {
+    color: rgba(3,3,3);
+    font-size: 1.6rem;
+    max-width: 278px;
+    font-weight: 500;
+    line-height: 2.2rem;
+    margin-bottom: 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.video-creator, .title span {
+    color: rgba(96,96,96);
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 400;
+}
+.video-creator:hover{
+    color: black;
+}
+footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0c0c0c; /* You can change the background color as needed */
+    padding: 10px;
+    text-align: center;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    
+    /* Add space around the icons */
+}
+.home ,
+ .shorts ,
+  .subscription ,
+   .profile {
+    transition: 0.3s ease-in-out;
+   }
+   .home:hover ,
+ .shorts:hover ,
+  .subscription:hover ,
+   .profile:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+   }
+   
+   .profile{
+    outline: none;
+    overflow: hidden;
+    border-radius: 50%;
+   }
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="youtube-logo.png" width="140px" alt="">
+      
+
+        <div class="mid-section">
+            <form action="">
+                <input class="searchh" type="text" placeholder="Search">
+                <button><i class="material-icons">search</i></button>
+                
+            </form>
+        </div>
+
+    </header>
+    <nav>
+      <a href="#">Sports</a>
+      <a href="#">Games</a>
+      <a href="#">Food</a>
+      <a href="#">Movies</a>
+      <a href="#">Film</a>
+      <a href="#">Study</a>
+      <a href="#">News</a>
+      <a href="#">technologie</a>
+      <a href="#">Sports</a>
+      <a href="#">Games</a>
+      <a href="#">Food</a>
+      <a href="#">Movies</a>
+      <a href="#">Film</a>
+      <a href="#">Study</a>
+      <a href="#">News</a>
+      <a href="#">AI</a>
+      </nav>
+
+
+    
+      
+      
+  
+
+    <div class="content-area">
+        
+        
+        
+        <main>
+            <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                  </div>
+                </dSiv>
+             </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                </div>
+              </div>
+           </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                  </div>
+                </div>
+             </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                  </div>
+                </div>
+             </div>
+             <div class="videos-container">
+                <div class="video">
+                <div class="thumbnail">
+                  <img src="Screenshot 2024-01-28 065701.png" alt="">
+                </div>
+                <div class="video-details">
+                    <div class="creator-img">
+                  <img src="photo_2024-02-02_00-25-50.jpg" alt="">
+                    </div>
+                    <div class="title">
+                        <a href="" class="video-title">
+                            green screen
+                        </a>
+                        <a href="" class="video-creator">
+                            Ahmad Balbissi
+                        </a>
+                        <span> 10M Views • 1 day ago  </span>
+                    </div>
+                  </div>
+                </div>
+             </div>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-icons">
+          <div class="home">
+            <img src="photo_2024-02-03_01-44-44.jpg" width="25px" alt="">
+          </div>
+          <div class="shorts">
+            <img src="photo_2024-02-03_01-44-39.jpg" width="25px" alt="">
+          </div>
+        <div class="plus">
+          <img src="photo_2024-02-03_03-52-33.jpg" width="25px" alt="">
+        </div>
+        <div class="subscription">
+          <img src="photo_2024-02-03_01-44-00.jpg" width="25px" alt="">
+        </div>
+           <div class="profile">
+            <img class="profile" src="Screenshot 2024-01-27 082408.png" width="25px"  alt="">
+        </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
